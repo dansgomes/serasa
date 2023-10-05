@@ -1,43 +1,35 @@
 package com.serasa.controller;
 
 import com.serasa.domain.Pessoa;
-import com.serasa.service.PessoaService;
-import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/pessoa")
-@AllArgsConstructor
 public class PessoaController {
 
-    private PessoaService service;
 
-    @GetMapping("/{cpf}")
-    public Pessoa exibirPessoa(@PathVariable String cpf){
-        return this.service.exibirPessoa(cpf);
+    @GetMapping("cpf/{cpf}")
+    public Pessoa exibirPessoaPorCpf(@PathVariable String cpf){
+
+        List<Pessoa> listaPessoas = List.of(new Pessoa("Rafael", "123", "21324"), new Pessoa("Daniel","1234", "1235555"), new Pessoa());
+
+        for (int i = 0; i < listaPessoas.size(); i++) {
+
+            if(listaPessoas.get(i).getCpf().equals(cpf)){
+                return listaPessoas.get(i);
+            }
+        }
+
+        return new Pessoa();
     }
 
-    @GetMapping("/todos")
-    public List<Pessoa> exibirTodosOsNomesSujos(){
-        return this.service.exibirTodosOsNomesSujos();
-    }
-
-    @PostMapping
-    public String adicionarNomeNoSerasa(@RequestBody Pessoa pessoa) {
-        return this.service.adicionarNomeNoSerasa(pessoa);
-    }
-
-    @PostMapping("/varios")
-    public String adicionarVariosNomeNoSerasa(@RequestBody List<Pessoa> pessoa) {
-
-        pessoa.forEach(p -> this.service.adicionarNomeNoSerasa(p));
-        return "Pessoas adicionado com sucesso!";
-    }
-
-    @DeleteMapping
-    public String retirarNomeDoSerasa(@RequestBody Pessoa pessoa) {
-        return this.service.retirarNomeDoSerasa(pessoa);
+    @GetMapping("rg/{rg}")
+    public Pessoa exibirPessoaPorRG(@PathVariable String rg){
+        return null;
     }
 }
