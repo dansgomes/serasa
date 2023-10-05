@@ -12,11 +12,11 @@ import java.util.List;
 @RequestMapping("/pessoa")
 public class PessoaController {
 
+    private List<Pessoa> listaPessoas = List.of(new Pessoa("Rafael", "123", "21324"), new Pessoa("Daniel","1234", "1235555"), new Pessoa());
 
     @GetMapping("cpf/{cpf}")
     public Pessoa exibirPessoaPorCpf(@PathVariable String cpf){
 
-        List<Pessoa> listaPessoas = List.of(new Pessoa("Rafael", "123", "21324"), new Pessoa("Daniel","1234", "1235555"), new Pessoa());
 
         for (int i = 0; i < listaPessoas.size(); i++) {
 
