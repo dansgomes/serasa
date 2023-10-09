@@ -12,15 +12,15 @@ import java.util.List;
 @RequestMapping("/pessoa")
 public class PessoaController {
 
-    private List<Pessoa> listaPessoas = List.of(new Pessoa("Rafael", "123", "21324"), new Pessoa("Daniel","1234", "1235555"), new Pessoa());
+    private List<Pessoa> listaPessoas = List.of(new Pessoa("Rafael", "123"), new Pessoa("Daniel", "223"), new Pessoa("João", "321"));
 
     @GetMapping("cpf/{cpf}")
-    public Pessoa exibirPessoaPorCpf(@PathVariable String cpf){
+    public Pessoa exibirPessoaPorCpf(@PathVariable String cpf) {
 
 
         for (int i = 0; i < listaPessoas.size(); i++) {
 
-            if(listaPessoas.get(i).getCpf().equals(cpf)){
+            if (listaPessoas.get(i).getCpf().equals(cpf)) {
                 return listaPessoas.get(i);
             }
         }
@@ -29,7 +29,26 @@ public class PessoaController {
     }
 
     @GetMapping("rg/{rg}")
-    public Pessoa exibirPessoaPorRG(@PathVariable String rg){
-        return null;
+    public Pessoa exibirPessoaPorRG(@PathVariable String rg) {
+
+        for (int i = 0; i < listaPessoas.size(); i++) {
+
+            if (listaPessoas.get(i).getRg().equals(rg)) {
+                return listaPessoas.get(i);
+            }
+        }
+        return new Pessoa();
+    }
+
+    @GetMapping("telefone/{telefone}")
+    public Pessoa exibirPessoaPorTelefone(@PathVariable String telefone) {
+        for (int i = 0; i < listaPessoas.size(); i++) {
+
+            if (listaPessoas.get(i).getRg().equals(telefone)) {
+                return listaPessoas.get(i);
+            }
+            return new Pessoa();
+        }
     }
 }
+
