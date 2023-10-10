@@ -12,7 +12,7 @@ import java.util.List;
 @RequestMapping("/pessoa")
 public class PessoaController {
 
-    private List<Pessoa> listaPessoas = List.of(new Pessoa("Rafael", "123"), new Pessoa("Daniel", "223"), new Pessoa("João", "321"));
+    private List<Pessoa> listaPessoas = List.of(new Pessoa("Rafael", "123", "111", "4321"), new Pessoa( "213"), new Pessoa("333", "121"));
 
     @GetMapping("cpf/{cpf}")
     public Pessoa exibirPessoaPorCpf(@PathVariable String cpf) {
@@ -44,11 +44,12 @@ public class PessoaController {
     public Pessoa exibirPessoaPorTelefone(@PathVariable String telefone) {
         for (int i = 0; i < listaPessoas.size(); i++) {
 
-            if (listaPessoas.get(i).getRg().equals(telefone)) {
+            if (listaPessoas.get(i).getTelefone().equals(telefone)) {
                 return listaPessoas.get(i);
             }
+        }
             return new Pessoa();
         }
-    }
+
 }
 

@@ -15,9 +15,12 @@ public class Pessoa {
         this.cpf = cpf;
     }
 
-    public Pessoa(String telefone) {this.telefone = telefone;}
+    public Pessoa(String rg, String telefone) {
+        this.rg = rg;
+        this.telefone = telefone;
+    }
 
-    public Pessoa(String nome, String cpf) {
+    public Pessoa(String nome, String cpf, String rg, String telefone) {
         this.nome = nome;
         this.cpf = cpf;
         this.rg = rg;
